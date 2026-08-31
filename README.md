@@ -1,3 +1,4 @@
 # Reproduction-of-Results-from-the-Research-Article-A-Compact-Broadband-Cross-Shaped..Antenna..-
+Course: Advanced Antennas – Assignment 1
 Reproduction of Results from the Research Article ``A Compact Broadband Cross-Shaped Circularly Polarized Planar Monopole Antenna With a Ground Plane Extension''.
  Using the Antenna Toolbox in MATLAB, the antenna presented in the research article was designed and electromagnetically simulated with the aim of reproducing the published results. The simulation results were compared with the corresponding results reported in the article, with observed deviations mainly attributed to the increased computational requirements of the simulation and the reduced mesh resolution used.
