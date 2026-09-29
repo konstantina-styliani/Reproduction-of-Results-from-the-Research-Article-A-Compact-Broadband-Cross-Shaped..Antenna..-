@@ -1,7 +1,7 @@
 clear all
 clc
 freq_S11 = linspace(4e9,8e9,15);
-freq_AR = linspace(4.5e9,7.5e9,12);
+freq_AR = linspace(4.5e9,7.5e9,90);
 L=22e-3;
 W=16e-3;
 a=2e-3;
@@ -125,45 +125,37 @@ light; lighting gouraud; camlight;
 figure(6)
 current(compact_planar,6e9);
 
-
 figure(7)
 
-%colors = {'r','g','b','c','k'};
+colors = {'r','g','b','c','k'};
 mesh(AntI,"MaxEdgeLength",.0058,'MinEdgeLength',.0015,'GrowthRate',0.5);
 mesh(AntII,"MaxEdgeLength",.0067,'MinEdgeLength',.0015,'GrowthRate',0.5)
 mesh(AntIII,"MaxEdgeLength",.0067,'MinEdgeLength',.00025,'GrowthRate',0.5)
 mesh(AntIV,"MaxEdgeLength",.005,'MinEdgeLength',.00025,'GrowthRate',0.5)
 mesh(compact_planar,"MaxEdgeLength",.005,'MinEdgeLength',.00025,'GrowthRate',0.5)
 
-ant = {AntI,AntII,AntIII,AntIV,compact_planar};
-
 s11Fig = figure(8);
+hold on
 for i=1:5
-    
+    i=3
+    ant = {AntI,AntII,AntIII,AntIV,compact_planar};
     s = sparameters(ant{i},freq_S11);
     hi= rfplot(s,1,1);
-    hold on
-    
-    %hi.Color = colors{i};
+    hi.Color = colors{i};
 end
 legend('Ant.I','Ant.II','Ant.III','Ant.IV','Ant.V')
-    xlabel('Frequency (GHz)');
-    ylabel('S_{11} (db)');
-
-
+xlabel('Frequency (GHz)');
+ylabel('S_{11} (db)');
 hold off
 
 AxialRatioFig = figure(9);
-
+hold on
 for j=1:5
-    AR=axialRatio(ant{j},freq_AR,0,0);
-    plot(freq_AR/1e9, AR, 'LineWidth', 2);
-    hold on
+    axialRatio(ant{j},freq_AR,0,0);
     end
- legend('Ant.I','Ant.II','Ant.III','Ant.IV','Ant.V')
-    xlabel('Frequency (GHz)');
-    ylabel('Axial Ratio (dB)');
-
+legend('Ant.I','Ant.II','Ant.III','Ant.IV','Ant.V')
+xlabel('Frequency (GHz)');
+ylabel('Axial Ratio (dB)');
 hold off
 
 
